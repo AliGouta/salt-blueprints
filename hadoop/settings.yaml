@@ -1,0 +1,21 @@
+hadoop:
+
+    blueprint: hdp-aram-cluster
+    default_password: admin-admin
+    host_groups:
+        name: host_group_master_2
+        fqdns:
+            ip-172-31-0-101.eu-central-1.compute.internal
+        name: host_group_master_3
+        fqdns:
+            ip-172-31-0-102.eu-central-1.compute.internal
+        name: host_group_slave_1
+        fqdns:
+            ip-172-31-0-103.eu-central-1.compute.internal
+        name: host_group_slave_2
+        fqdns:
+            ip-172-31-0-104.eu-central-1.compute.internal
+        name: host_group_client
+        fqdns:
+            ip-172-31-0-105.eu-central-1.compute.internal
+

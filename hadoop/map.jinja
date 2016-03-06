@@ -1,0 +1,4 @@
+{% import_yaml 'hadoop/settings.yaml' as default_settings %}
+
+{# Load specific pillar and use defaults for non-overriden elements #}
+{% set hadoop = salt['pillar.get']('hadoop', default=default_settings.hadoop, merge=True ) %}

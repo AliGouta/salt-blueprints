@@ -1,0 +1,22 @@
+{%- from 'hadoop/map.jinja' import hadoop with context %}
+{# set temp = hadoop #}
+
+
+{
+  "blueprint": "{{ hadoop.blueprint }}",
+  "default_password": "admin",
+  "host_groups": [
+    {% for hostgroup in hadoop.host_groups.items() recursive %}
+    {
+      "hosts": [
+        {% for fqdn in hostgroup.fqdns.items() recursive %}
+        {
+         "fqdn" : "{{ host }}"
+        }
+        {% endfor %}
+        ]
+      "name": "{{ hostgroup.name }}"
+    }
+    {% endfor %}
+  ]
+}
