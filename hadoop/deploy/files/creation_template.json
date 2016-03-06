@@ -6,17 +6,15 @@
   "blueprint": "{{ hadoop.blueprint }}",
   "default_password": "admin",
   "host_groups": [
-    {% for hostgroup in hadoop.host_groups.items() recursive %}
-    {
+    {% for hostgroup in hadoop.host_groups %}{
       "hosts": [
-        {% for fqdn in hostgroup.fqdns.items() recursive %}
-        {
-         "fqdn" : "{{ host }}"
-        }
-        {% endfor %}
-        ]
+      {% for fqdns in hostgroup.hosts %}{
+        "fqdn": "{{ fqdns.fqdn }}"
+      }{% if not loop.last %},
+      {% endif %}{% endfor %}
+      ],
       "name": "{{ hostgroup.name }}"
-    }
-    {% endfor %}
+    }{% if not loop.last %},
+    {% endif %}{% endfor %}
   ]
 }
